@@ -152,27 +152,42 @@
 
 .mega-menu-link {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: #334155;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: color 0.2s;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #1a1f36;
+  text-decoration: none;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s;
 }
 
 .mega-menu-link:hover {
-  color: #008080;
+  background: #f1f5f9;
 }
 
 .mega-icon-wrapper {
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #3b82f6;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
 }
 
-.mega-menu-link:hover .mega-icon-wrapper {
-  color: #008080;
+.mega-link-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mega-link-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+.mega-link-desc {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.4;
+  font-weight: 400;
 }
 
 /* Right Side Utilities */
