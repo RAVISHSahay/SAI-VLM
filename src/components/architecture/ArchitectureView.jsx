@@ -11,6 +11,9 @@ const ArchitectureView = () => {
     <section className="architecture-view-section">
       <div className="arch-container">
         <div className="arch-main-header">
+          <div className="arch-logo-top-right">
+            <span className="logo-text-main">SAI</span> <span className="logo-text-sub">VLM</span>
+          </div>
           <h1>END-TO-END VENDOR LIFECYCLE <span className="highlight-dot">&bull;</span> ARCHITECTURE VIEW</h1>
           <p className="arch-subtitle">Master Data Foundation + 21-Step Workflow + 44 AI Agents across 5 Layers</p>
         </div>
