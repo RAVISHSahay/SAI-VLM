@@ -8,7 +8,7 @@ import ArchitectureView from './architecture/ArchitectureView';
 import './PlatformTabs.css';
 
 const PlatformTabs = () => {
-  const [activeTab, setActiveTab] = useState('explore'); // 'explore' or 'architecture'
+  const [activeTab, setActiveTab] = useState('architecture'); // 'explore' or 'architecture'
 
   const capabilities = [
     { icon: <Crosshair size={24} />, title: 'Intelligent Sourcing Workspace', desc: 'A single command center where category managers run RFx events, conduct market intelligence scans, simulate negotiation scenarios, and award contracts — all powered by AI co-pilots that suggest suppliers, draft RFPs, and score responses automatically.' },
