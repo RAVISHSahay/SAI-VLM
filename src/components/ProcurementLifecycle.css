@@ -1,0 +1,106 @@
+.lifecycle-section {
+  padding: 6rem 0;
+  background-color: #0B1120;
+}
+
+.lifecycle-header {
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lifecycle-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.lifecycle-subtitle {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* Flowchart Area */
+.lifecycle-flowchart {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.flowchart-row-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.flowchart-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+}
+
+/* Lifecycle Nodes (The Pills) */
+.lifecycle-node {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 2px solid #0ea5e9; /* Default blue glow */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  color: #f1f5f9;
+  padding: 0.85rem 1.75rem;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  outline: none;
+}
+
+/* Row-specific colors */
+.lifecycle-node.row-1 { border-top-color: #0ea5e9; }
+.lifecycle-node.row-2 { border-top-color: #3b82f6; }
+.lifecycle-node.row-3 { border-top-color: #0ea5e9; }
+
+.lifecycle-node:hover {
+  background: rgba(30, 41, 59, 1);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.lifecycle-node.active {
+  background: rgba(30, 41, 59, 1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+}
+
+.flowchart-arrow {
+  color: #334155;
+  opacity: 0.6;
+}
+
+.lifecycle-footer {
+  margin-top: 4rem;
+  color: #64748b;
+  font-size: 0.95rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+@media (max-width: 1024px) {
+  .flowchart-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .flowchart-arrow {
+    display: none;
+  }
+}
