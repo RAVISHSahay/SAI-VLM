@@ -4,6 +4,7 @@ import {
   ActivitySquare, ShieldCheck, MessageSquare, 
   BarChart4, CheckCircle2, Bot, Network, Briefcase, UserCheck
 } from 'lucide-react';
+import ArchitectureView from './architecture/ArchitectureView';
 import './PlatformTabs.css';
 
 const PlatformTabs = () => {
@@ -131,33 +132,7 @@ const PlatformTabs = () => {
         {/* TAB 2: VIEW ARCHITECTURE */}
         {activeTab === 'architecture' && (
           <div className="tab-content animate-fade-up">
-            <div className="tab-title-area text-center">
-              <h2>Platform Architecture — <span className="text-gradient">A Layered Agentic Blueprint</span></h2>
-              <p className="tab-subtitle">
-                The architecture is organized into six logical layers, each with specialized agents, services, and integration patterns.
-              </p>
-            </div>
-
-            {/* 6 Layer Stack */}
-            <h3 className="section-divider">The Six-Layer Architecture</h3>
-            <div className="layer-stack">
-              {layers.map((layer, idx) => (
-                <div key={idx} className="arch-layer-block">
-                  <div className="arch-layer-left" style={{ backgroundColor: layer.color }}>
-                    LAYER {layer.num}
-                  </div>
-                  <div className="arch-layer-right">
-                    <h4>{layer.name}</h4>
-                    <p>{layer.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="architecture-footer" style={{ marginTop: '3rem' }}>
-              The platform is not just a tool — it's an intelligent operating system for procurement and finance, where agents, data, and humans collaborate seamlessly to deliver speed, savings, compliance, and insight at scale.
-            </div>
-
+            <ArchitectureView />
           </div>
         )}
 
