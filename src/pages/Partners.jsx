@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { 
   Handshake, TrendingUp, LifeBuoy, Sprout, 
   CheckCircle2, ArrowRight, Building2, User, 
@@ -7,7 +8,26 @@ import {
 import './Partners.css';
 
 const Partners = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState('become-partner');
+
+  // Handle Hash-based Tab Selection
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+      const tabMap = {
+        'become-partner': 'become-partner',
+        'benefits': 'benefits',
+        'support': 'support',
+        'grow': 'grow'
+      };
+      if (tabMap[hash]) {
+        setActiveTab(tabMap[hash]);
+        // Smooth scroll to top when tab changes via hash
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  }, [location]);
   const [formData, setFormData] = useState({
     companyName: '',
     contactPerson: '',

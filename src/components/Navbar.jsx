@@ -179,6 +179,9 @@ const Navbar = () => {
                   if (item.name.toLowerCase().includes('reconcile') || item.name.toLowerCase().includes('receive')) target = '/#four-pillars-p2r';
                   if (item.name.toLowerCase().includes('supplier') || item.name.toLowerCase().includes('intelligence')) target = '/#supplier-intelligence';
                   if (item.name === 'Become a Partner') target = '/partners#become-partner';
+                  if (item.name === 'Benefit to Partner') target = '/partners#benefits';
+                  if (item.name === 'Support Partner Gets') target = '/partners#support';
+                  if (item.name === 'Grow Together') target = '/partners#grow';
 
                   return (
                     <Link key={idx} to={item.name === 'ROI Calculator' ? '/roi-calculator' : target} className="mega-menu-link">
@@ -251,7 +254,7 @@ const Navbar = () => {
             onMouseEnter={() => setActiveMegaMenu('partners')}
             onMouseLeave={() => setActiveMegaMenu(null)}
           >
-            <span>Partners</span>
+            <Link to="/partners" style={{ color: 'inherit', textDecoration: 'none' }}>Partners</Link>
             {activeMegaMenu === 'partners' && renderMegaMenu(partnerData)}
           </div>
         </div>
