@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Database, Bot, AlertTriangle, ShieldCheck, Cpu } from 'lucide-react';
+import { Database, Bot, AlertTriangle, ShieldCheck, Cpu, ChevronLeft, ChevronRight } from 'lucide-react';
 import './MasterDataIntelligence.css';
 
 const masterDataEntities = [
@@ -144,6 +144,7 @@ const masterDataEntities = [
 
 const MasterDataIntelligence = () => {
   const [activeEntity, setActiveEntity] = useState(masterDataEntities[0].id);
+  const tabsRef = React.useRef(null);
   const { hash } = useLocation();
 
   useEffect(() => {
@@ -156,7 +157,16 @@ const MasterDataIntelligence = () => {
 
   const handleTabClick = (id) => {
     setActiveEntity(id);
-    // Remove scrollIntoView to keep the cards in focus as per user request
+  };
+
+  const scrollTabs = (direction) => {
+    if (tabsRef.current) {
+      const scrollAmount = 300;
+      tabsRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
@@ -178,23 +188,33 @@ const MasterDataIntelligence = () => {
               <h3 className="mdi-section-title">The 12 Foundational Entities</h3>
             </div>
             
-            <div className="mdi-tabs-container">
-              <div className="mdi-horizontal-tabs">
-                {masterDataEntities.map(entity => {
-                  const [num, ...titleParts] = entity.title.split('. ');
-                  const title = titleParts.join('. ');
-                  return (
-                    <div 
-                      key={entity.id}
-                      className={`mdi-tab-card ${activeEntity === entity.id ? 'active' : ''}`}
-                      onClick={() => handleTabClick(entity.id)}
-                    >
-                      <span className="mdi-card-num">{num}.</span>
-                      <span className="mdi-card-title">{title}</span>
-                    </div>
-                  );
-                })}
+            <div className="mdi-tabs-wrapper">
+              <button className="mdi-scroll-btn left" onClick={() => scrollTabs('left')}>
+                <ChevronLeft size={24} />
+              </button>
+              
+              <div className="mdi-tabs-container" ref={tabsRef}>
+                <div className="mdi-horizontal-tabs">
+                  {masterDataEntities.map(entity => {
+                    const [num, ...titleParts] = entity.title.split('. ');
+                    const title = titleParts.join('. ');
+                    return (
+                      <div 
+                        key={entity.id}
+                        className={`mdi-tab-card ${activeEntity === entity.id ? 'active' : ''}`}
+                        onClick={() => handleTabClick(entity.id)}
+                      >
+                        <span className="mdi-card-num">{num}.</span>
+                        <span className="mdi-card-title">{title}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+
+              <button className="mdi-scroll-btn right" onClick={() => scrollTabs('right')}>
+                <ChevronRight size={24} />
+              </button>
             </div>
           </div>
 
