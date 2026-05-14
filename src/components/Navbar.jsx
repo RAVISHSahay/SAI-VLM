@@ -8,13 +8,17 @@ import {
   Building2, ShoppingBag, Landmark, Stethoscope, 
   Car, Cpu, Zap, Plane, Phone,
   TrendingDown, ShieldAlert, Leaf, UsersRound, 
-  ShieldCheck, TrendingUp, MonitorSmartphone, Timer
+  ShieldCheck, TrendingUp, MonitorSmartphone, Timer,
+  BookOpen, PlayCircle, Calendar, FileText, HelpCircle,
+  MessageSquare, Briefcase, GraduationCap, Shield,
+  Microscope, Landmark as Bank, Store, Rocket
 } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [activeTab, setActiveTab] = useState('process');
+  const [activeMegaMenu, setActiveMegaMenu] = useState(null);
+  const [activeSolutionTab, setActiveSolutionTab] = useState('process');
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -24,183 +28,210 @@ const Navbar = () => {
 
   const solutionsData = {
     process: {
+      title: 'By Process',
       col1: [
-        { name: 'Source-to-Pay', icon: Globe, desc: 'The end-to-end umbrella covering the full procurement lifecycle from sourcing to payment. Unifies all upstream and downstream modules into one connected flow.' },
-        { name: 'Strategic Sourcing', icon: Cpu, desc: 'The strategic brain of procurement — drives category strategy, market intelligence, and savings programs with AI co-pilots.' },
-        { name: 'Supplier Management', icon: Users, desc: 'The single source of truth for every supplier relationship. Manages onboarding, risk monitoring, and performance scorecards.' },
-        { name: 'Sourcing', icon: Zap, desc: 'The execution engine for RFx events — RFI, RFP, RFQ, and reverse auctions with AI-assisted bid evaluation and award optimization.' },
-        { name: 'Contract Management', icon: Monitor, desc: 'Full contract lifecycle management — authoring, redlining, e-signature, and obligation tracking with LLM-based metadata extraction.' },
-        { name: 'Environmental Impact Center', icon: Leaf, desc: 'The ESG nerve center — captures Scope 1, 2, and 3 emissions and supplier ESG scores. Generates CDP, BRSR, and CSRD-ready reports.' },
-        { name: 'Spend Analysis', icon: LineChart, desc: 'Real-time spend cubes with AI-driven classification. Detects maverick activity and surfaces savings opportunities without manual effort.' },
-        { name: 'Analytics', icon: LayoutDashboard, desc: 'Cross-module BI with predictive insights. Embedded GenAI lets users ask questions in natural language and get charted answers.' },
+        { name: 'Source-to-Pay', icon: Globe, desc: 'The end-to-end umbrella covering the full procurement lifecycle.' },
+        { name: 'Strategic Sourcing', icon: Cpu, desc: 'Drive category strategy and savings with AI co-pilots.' },
+        { name: 'Supplier Management', icon: Users, desc: 'Single source of truth for every supplier relationship.' },
       ],
       col2: [
-        { name: 'Procure-to-Pay', icon: Settings, desc: 'The transactional backbone covering requisition to payment. AI-driven 3-way matching targets 80%+ touchless invoice processing.' },
-        { name: 'eProcurement', icon: ShoppingCart, desc: 'The user-facing buying experience with catalogs and guided buying. Channels users to preferred suppliers and pre-negotiated prices.' },
-        { name: 'External Workforce Management', icon: UsersRound, desc: 'Manages contingent labor, contractors, and SOW-based services. Covers onboarding, rate cards, and compliance regulations.' },
-        { name: 'Invoicing', icon: Receipt, desc: 'Multi-channel invoice capture via e-invoicing, EDI, and OCR. Performs automated 3-way matching and tax validation across global mandates.' },
-        { name: 'Payments', icon: Coins, desc: 'Orchestrates payments across ACH, SWIFT, and virtual cards. Optimizes DPO, captures discounts, and screens every payment for fraud.' },
-        { name: 'Payment Cards', icon: CreditCard, desc: 'Virtual and physical card programs for tail-spend purchases. Includes spend controls and automated reconciliation without raising a PO.' },
-        { name: 'Inventory Collaboration', icon: ActivitySquare, desc: 'Real-time visibility on stock, demand forecasts, and ASNs. Supports VMI, Kanban, and JIT — reducing stockouts and the bullwhip effect.' },
-        { name: 'Intake Management', icon: Inbox, desc: 'The "front door" of procurement — a unified portal for any employee request (buy, hire, NDA). AI triages and routes each request.' },
+        { name: 'Procure-to-Pay', icon: Settings, desc: 'Transactional backbone from requisition to payment.' },
+        { name: 'eProcurement', icon: ShoppingCart, desc: 'Guided buying experience with pre-negotiated prices.' },
+        { name: 'Invoicing', icon: Receipt, desc: 'Automated 3-way matching and tax validation.' },
       ],
       col3: [
-        { name: 'Direct Materials (Sourcing)', icon: Factory, desc: 'Specialized sourcing for production materials — BOM-linked, multi-tier, with rigorous quality and regulatory rigor.' },
-        { name: 'Direct Materials (Planning/Execution)', icon: GitMerge, desc: 'Connects MRP and production schedules with scheduling agreements and ASNs. Critical where materials drive 50–70% of COGS.' },
-        { name: 'Supply Chain Collaboration', icon: Network, desc: 'Multi-tier visibility and coordination covering Tier-2/3 suppliers, in-transit shipments, and disruption events.' },
-        { name: 'Additional Modules', icon: PlusSquare, desc: 'Vertical-specific extensions — Services Procurement, CapEx, and Trade Compliance tailored for pharma, BFSI, and energy.' },
+        { name: 'Inventory Collaboration', icon: ActivitySquare, desc: 'Real-time visibility on stock and demand forecasts.' },
+        { name: 'Supply Chain Collaboration', icon: Network, desc: 'Multi-tier visibility across your entire supply base.' },
       ]
     },
     industry: {
+      title: 'By Industry',
       col1: [
-        { name: 'Manufacturing', icon: Factory, desc: 'Optimize supply chain resilience with raw material quality tracking and predictive partner maintenance.' },
-        { name: 'Retail & Consumer Goods', icon: ShoppingBag, desc: 'Manage high-volume vendor ecosystems and seasonal demand with automated replenishment.' },
-        { name: 'Financial Services', icon: Landmark, desc: 'Ensure rigorous regulatory compliance and cybersecurity with automated vendor vetting.' },
-        { name: 'Healthcare', icon: Stethoscope, desc: 'Maintain strict data privacy and patient safety standards with comprehensive security assessments.' },
+        { name: 'Manufacturing', icon: Factory, desc: 'Optimize supply chain resilience and quality tracking.' },
+        { name: 'Retail & Consumer Goods', icon: ShoppingBag, desc: 'Manage high-volume vendor ecosystems.' },
       ],
       col2: [
-        { name: 'Public Sector', icon: Building2, desc: 'Enhance transparency and accountability with auditable procurement and regulatory compliance.' },
-        { name: 'Automotive', icon: Car, desc: 'Streamline complex parts supply chains with strict engineering standards and JIT coordination.' },
-        { name: 'Technology', icon: Cpu, desc: 'Manage rapid digital transformation with automated IT vendor onboarding and license tracking.' },
-        { name: 'Energy & Utilities', icon: Zap, desc: 'Ensure infrastructure reliability and safety with rigorous subcontractor and subcontractor management.' },
+        { name: 'Financial Services', icon: Bank, desc: 'Ensure rigorous regulatory compliance and vetting.' },
+        { name: 'Healthcare', icon: Stethoscope, desc: 'Maintain strict data privacy and safety standards.' },
       ],
       col3: [
-        { name: 'Aerospace & Defense', icon: Plane, desc: 'Maintain high-security standards and supply chain integrity with strict export control compliance.' },
-        { name: 'Telecommunications', icon: Phone, desc: 'Scale 5G rollouts with high-volume contract management and strict performance SLA tracking.' },
+        { name: 'Technology', icon: Cpu, desc: 'Scale with automated IT vendor onboarding.' },
+        { name: 'Automotive', icon: Car, desc: 'Streamline complex JIT part supply chains.' },
       ]
     },
     need: {
+      title: 'By Business Need',
       col1: [
-        { name: 'Reduce Costs', icon: TrendingDown, desc: 'Optimize Total Cost of Ownership through strategic consolidation and automated spend management.' },
-        { name: 'Mitigate Risk', icon: ShieldAlert, desc: 'Ensure business continuity with real-time supplier monitoring to proactively mitigate disruptions.' },
-        { name: 'Improve ESG', icon: Leaf, desc: 'Integrate ethical and sustainable criteria into sourcing to ensure a compliant supply base.' },
+        { name: 'Reduce Costs', icon: TrendingDown, desc: 'Optimize TCO through strategic consolidation.' },
+        { name: 'Mitigate Risk', icon: ShieldAlert, desc: 'Real-time supplier monitoring and disruption alerts.' },
       ],
       col2: [
-        { name: 'Supplier Diversity', icon: UsersRound, desc: 'Promote inclusive procurement by identifying and onboarding diverse-owned businesses.' },
-        { name: 'Compliance Management', icon: ShieldCheck, desc: 'Automate regulatory adherence and audit readiness with centralized document tracking.' },
-        { name: 'Optimize Working Capital', icon: TrendingUp, desc: 'Improve cash flow by aligning payment terms and optimizing inventory cycles through data.' },
+        { name: 'Improve ESG', icon: Leaf, desc: 'Integrate ethical criteria into every sourcing event.' },
+        { name: 'Compliance Management', icon: ShieldCheck, desc: 'Automate audit readiness and document tracking.' },
       ],
       col3: [
-        { name: 'Digital Transformation', icon: MonitorSmartphone, desc: 'Digitize manual workflows to eliminate bottlenecks and enable data-driven decision-making.' },
-        { name: 'Faster Time-to-Market', icon: Timer, desc: 'Accelerate source-to-contract cycles through automated approvals and pre-vetted catalogs.' },
+        { name: 'Digital Transformation', icon: MonitorSmartphone, desc: 'Digitize manual workflows and eliminate bottlenecks.' },
       ]
     }
   };
 
-  const activeData = solutionsData[activeTab];
+  const companyData = {
+    col1: [
+      { name: 'About SAI VLM', icon: Network, desc: 'Our mission to scale trust through agentic automation.' },
+      { name: 'Our Leadership', icon: Users, desc: 'Meet the visionaries redefining enterprise procurement.' },
+      { name: 'Careers', icon: Briefcase, desc: 'Join the team building the future of AI-driven supply chains.' },
+    ],
+    col2: [
+      { name: 'Trust & Security', icon: Shield, desc: 'SOC2, ISO 27001, and enterprise-grade data privacy.' },
+      { name: 'Compliance Center', icon: ShieldCheck, desc: 'Stay audit-ready across 100+ global mandates.' },
+      { name: 'ESG Commitment', icon: Leaf, desc: 'Our journey toward a net-zero, ethical supply chain.' },
+    ],
+    col3: [
+      { name: 'Newsroom', icon: Globe, desc: 'Latest announcements, PR, and company updates.' },
+      { name: 'Contact Us', icon: Phone, desc: 'Get in touch with our global support and sales teams.' },
+    ]
+  };
+
+  const resourceData = {
+    col1: [
+      { name: 'Resource Center', icon: BookOpen, desc: 'Playbooks, templates, and expert procurement guides.' },
+      { name: 'VLM Blog', icon: FileText, desc: 'Insights on AI, risk, and global supply chain trends.' },
+      { name: 'Industry Glossary', icon: GraduationCap, desc: 'Mastering complex VLM and procurement terminology.' },
+    ],
+    col2: [
+      { name: 'Webinars', icon: Calendar, desc: 'Live monthly sessions with global industry leaders.' },
+      { name: 'Video Library', icon: PlayCircle, desc: 'Product tours and masterclasses on agentic AI.' },
+      { name: 'Global Events', icon: Globe, desc: 'See SAI VLM live at top procurement summits.' },
+    ],
+    col3: [
+      { name: 'Developer Hub', icon: Cpu, desc: 'API documentation and integration blueprints.' },
+      { name: 'Help Center', icon: HelpCircle, desc: 'Technical support and detailed user guides.' },
+      { name: 'Community', icon: MessageSquare, desc: 'Share insights with fellow VLM practitioners.' },
+    ]
+  };
+
+  const customerData = {
+    col1: [
+      { name: 'Drug Manufacturer', icon: Microscope, desc: 'How a global pharma giant automated 90% of vendor vetting.' },
+      { name: 'Automotive Giant', icon: Car, desc: 'Scaling JIT supply chains with multi-tier visibility.' },
+      { name: 'Retail Leader', icon: ShoppingBag, desc: 'Streamlining high-volume vendor ecosystems at scale.' },
+    ],
+    col2: [
+      { name: 'Global Bank', icon: Bank, desc: 'Ensuring zero-leakage compliance across 10k+ vendors.' },
+      { name: 'Tech Innovator', icon: Rocket, desc: 'Accelerating digital transformation with automated onboarding.' },
+      { name: 'Consumer Goods', icon: Store, desc: 'Optimizing working capital and inventory cycles.' },
+    ],
+    col3: [
+      { name: 'Case Studies', icon: FileText, desc: 'Measurable outcomes across every major vertical.' },
+      { name: 'Testimonials', icon: Users, desc: 'Why 500+ enterprises trust SAI VLM.' },
+      { name: 'ROI Calculator', icon: LineChart, desc: 'See your potential savings in under 3 minutes.' },
+    ]
+  };
+
+  const renderMegaMenu = (data, isSolutions = false) => {
+    const content = isSolutions ? data[activeSolutionTab] : data;
+    
+    return (
+      <div className="mega-menu-overlay">
+        <div className="mega-menu-container">
+          {isSolutions && (
+            <div className="mega-menu-sidebar">
+              <h3 className="mega-menu-sidebar-title">Solutions</h3>
+              <ul className="mega-menu-tabs">
+                {Object.keys(solutionsData).map(tab => (
+                  <li 
+                    key={tab}
+                    className={`mega-menu-tab ${activeSolutionTab === tab ? 'active' : ''}`}
+                    onMouseEnter={() => setActiveSolutionTab(tab)}
+                  >
+                    {solutionsData[tab].title}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          <div className="mega-menu-content" style={{ width: isSolutions ? '75%' : '100%' }}>
+            {[content.col1, content.col2, content.col3].map((col, cIdx) => (
+              <div key={cIdx} className="mega-menu-column">
+                {col?.map((item, idx) => {
+                  const Icon = item.icon;
+                  // Specific link mapping for solutions
+                  let target = '/#';
+                  if (item.name.toLowerCase().includes('source') || item.name.toLowerCase().includes('contract')) target = '/#four-pillars-s2c';
+                  if (item.name.toLowerCase().includes('procure') && item.name.toLowerCase().includes('pay')) target = '/#four-pillars-p2p';
+                  if (item.name.toLowerCase().includes('reconcile') || item.name.toLowerCase().includes('receive')) target = '/#four-pillars-p2r';
+                  if (item.name.toLowerCase().includes('supplier') || item.name.toLowerCase().includes('intelligence')) target = '/#supplier-intelligence';
+
+                  return (
+                    <Link key={idx} to={target} className="mega-menu-link">
+                      <div className="mega-icon-wrapper"><Icon size={18} /></div>
+                      <div className="mega-link-content">
+                        <span className="mega-link-name">{item.name}</span>
+                        {item.desc && <p className="mega-link-desc">{item.desc}</p>}
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <nav className={`navbar-wrapper ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
         
-        {/* Brand Logo */}
         <Link to="/" className="navbar-brand" style={{ textDecoration: 'none' }}>
           <Network color="var(--accent-blue)" size={28} />
-          <span className="brand-text">
-            SAI <span className="text-gradient">VLM</span>
-          </span>
+          <span className="brand-text">SAI <span className="text-gradient">VLM</span></span>
         </Link>
         
-        {/* Main Links */}
         <div className="navbar-links">
-          
-          <div className="nav-item">
+          <div 
+            className="nav-item" 
+            onMouseEnter={() => setActiveMegaMenu('solutions')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
             <span>Solutions</span>
-            
-            {/* Mega Menu Dropdown */}
-            <div className="mega-menu-overlay">
-              <div className="mega-menu-container">
-                {/* Left Sidebar */}
-                <div className="mega-menu-sidebar">
-                  <h3 className="mega-menu-sidebar-title">Solutions</h3>
-                  <ul className="mega-menu-tabs">
-                    <li 
-                      className={`mega-menu-tab ${activeTab === 'process' ? 'active' : ''}`}
-                      onMouseEnter={() => setActiveTab('process')}
-                      onClick={() => setActiveTab('process')}
-                    >
-                      By Process
-                    </li>
-                    <li 
-                      className={`mega-menu-tab ${activeTab === 'industry' ? 'active' : ''}`}
-                      onMouseEnter={() => setActiveTab('industry')}
-                      onClick={() => setActiveTab('industry')}
-                    >
-                      By Industry
-                    </li>
-                    <li 
-                      className={`mega-menu-tab ${activeTab === 'need' ? 'active' : ''}`}
-                      onMouseEnter={() => setActiveTab('need')}
-                      onClick={() => setActiveTab('need')}
-                    >
-                      By Business Need
-                    </li>
-                  </ul>
-                </div>
-                
-                {/* Main Grid Content */}
-                <div className="mega-menu-content">
-                  <div className="mega-menu-column">
-                    {activeData?.col1?.map((item, idx) => {
-                      const Icon = item.icon;
-                      const target = item.name.toLowerCase().includes('source') ? '/#four-pillars-s2c' : 
-                                    item.name.toLowerCase().includes('contract') ? '/#four-pillars-s2c' : '/#';
-                      return (
-                        <Link key={idx} to={target} className="mega-menu-link">
-                          <div className="mega-icon-wrapper"><Icon size={18} /></div>
-                          <div className="mega-link-content">
-                            <span className="mega-link-name">{item.name}</span>
-                            {item.desc && <p className="mega-link-desc">{item.desc}</p>}
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  <div className="mega-menu-column">
-                    {activeData?.col2?.map((item, idx) => {
-                      const Icon = item.icon;
-                      const target = item.name.toLowerCase().includes('procure') ? '/#four-pillars-p2p' : 
-                                    item.name.toLowerCase().includes('invoice') ? '/#procurement-lifecycle' : '/#';
-                      return (
-                        <Link key={idx} to={target} className="mega-menu-link">
-                          <div className="mega-icon-wrapper"><Icon size={18} /></div>
-                          <div className="mega-link-content">
-                            <span className="mega-link-name">{item.name}</span>
-                            {item.desc && <p className="mega-link-desc">{item.desc}</p>}
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                  <div className="mega-menu-column">
-                    {activeData?.col3?.map((item, idx) => {
-                      const Icon = item.icon;
-                      const target = item.name.toLowerCase().includes('direct') ? '/#four-pillars-s2c' : 
-                                    item.name.toLowerCase().includes('collaboration') ? '/#procurement-lifecycle' : '/#';
-                      return (
-                        <Link key={idx} to={target} className="mega-menu-link">
-                          <div className="mega-icon-wrapper"><Icon size={18} /></div>
-                          <div className="mega-link-content">
-                            <span className="mega-link-name">{item.name}</span>
-                            {item.desc && <p className="mega-link-desc">{item.desc}</p>}
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
+            {activeMegaMenu === 'solutions' && renderMegaMenu(solutionsData, true)}
           </div>
           
           <Link to="/platform" className="nav-item" style={{ textDecoration: 'none' }}>Platform</Link>
-          <div className="nav-item">Company</div>
-          <div className="nav-item">Resources</div>
+          
+          <div 
+            className="nav-item"
+            onMouseEnter={() => setActiveMegaMenu('company')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <span>Company</span>
+            {activeMegaMenu === 'company' && renderMegaMenu(companyData)}
+          </div>
+
+          <div 
+            className="nav-item"
+            onMouseEnter={() => setActiveMegaMenu('resources')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <span>Resources</span>
+            {activeMegaMenu === 'resources' && renderMegaMenu(resourceData)}
+          </div>
+
+          <div 
+            className="nav-item"
+            onMouseEnter={() => setActiveMegaMenu('customers')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <span>Customers</span>
+            {activeMegaMenu === 'customers' && renderMegaMenu(customerData)}
+          </div>
+          
           <div className="nav-item">Partners</div>
-          <div className="nav-item">Customers</div>
         </div>
 
-        {/* Right Side Actions */}
         <div className="navbar-actions">
           <button className="icon-btn"><Search size={20} /></button>
           <button className="icon-btn"><Globe size={20} /></button>
