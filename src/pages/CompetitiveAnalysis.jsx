@@ -4,7 +4,7 @@ import {
   BarChart3, Users, LayoutDashboard, Search,
   ArrowRight, Bot, Activity, Layers
 } from 'lucide-react';
-import './ComparativeAnalysis.css';
+import './CompetitiveAnalysis.css';
 
 const competitors = [
   { name: 'Coupa Software', focus: 'Business Spend Management', type: 'Legacy Workflow' },
