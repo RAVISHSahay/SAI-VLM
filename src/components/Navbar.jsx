@@ -4,7 +4,7 @@ import {
   Network, Search, Globe, ArrowRight,
   Users, Monitor, LineChart, LayoutDashboard,
   Settings, ShoppingCart, Receipt, Coins, CreditCard,
-  Inbox, Factory, GitMerge, PlusSquare, ActivitySquare,
+  Inbox, Factory, GitMerge, PlusSquare, Activity,
   Building2, ShoppingBag, Landmark, Stethoscope, 
   Car, Cpu, Zap, Plane, Phone,
   TrendingDown, ShieldAlert, Leaf, UsersRound, 
@@ -12,7 +12,8 @@ import {
   BookOpen, PlayCircle, Calendar, FileText, HelpCircle,
   MessageSquare, Briefcase, GraduationCap, Shield,
   Microscope, Landmark as Bank, Store, Rocket,
-  Handshake, HeartHandshake, LifeBuoy, Sprout, ClipboardCheck
+  Handshake, HeartHandshake, LifeBuoy, Sprout, ClipboardCheck,
+  Database
 } from 'lucide-react';
 import './Navbar.css';
 
@@ -76,6 +77,34 @@ const Navbar = () => {
     }
   };
 
+  const whyData = {
+    col1: [
+      { name: 'Competitive Analysis', icon: Activity, desc: 'How we stack up against Coupa, SAP Ariba, and 8 others.' },
+      { name: 'The Agentic Edge', icon: Zap, desc: 'Why autonomous agents outperform legacy workflows.' },
+    ],
+    col2: [
+      { name: 'ROI Framework', icon: Coins, desc: 'Calculating the value of autonomous procurement.' },
+      { name: 'Case Studies', icon: FileText, desc: 'Real-world impact across global enterprises.' },
+    ],
+    col3: [
+      { name: 'Platform Vision', icon: Rocket, desc: 'The future of autonomous vendor lifecycle management.' },
+    ]
+  };
+
+  const platformData = {
+    col1: [
+      { name: 'Unified Command Centre', icon: LayoutDashboard, desc: 'Single pane of glass for your entire VLM operation.' },
+      { name: 'Master Data Intelligence', icon: Database, desc: 'Continuous, self-healing cleansing of 12 foundational entities.' },
+    ],
+    col2: [
+      { name: 'Agentic Workflow Layer', icon: GitMerge, desc: 'Autonomous orchestration of complex procurement tasks.' },
+      { name: 'Integrations', icon: GitMerge, desc: 'Connect seamlessly with SAP, Oracle, MS Dynamics, and more.' },
+    ],
+    col3: [
+      { name: 'Security & Compliance', icon: ShieldCheck, desc: 'Enterprise-grade protection and audit readiness.' },
+    ]
+  };
+
   const companyData = {
     col1: [
       { name: 'About SAI VLM', icon: Network, desc: 'Our mission to scale trust through agentic automation.' },
@@ -131,7 +160,7 @@ const Navbar = () => {
 
   const partnerData = {
     col1: [
-      { name: 'Become a Partner', icon: Handshake, desc: 'Submit your application to join the SAI VLM ecosystem.' },
+      { name: 'Become a Partner', icon: Handshake, desc: 'Submit your application to join the SequelVendorX ecosystem.' },
       { name: 'Benefit to Partner', icon: TrendingUp, desc: 'Unlock new revenue streams and co-marketing opportunities.' },
     ],
     col2: [
@@ -146,6 +175,7 @@ const Navbar = () => {
 
   const renderMegaMenu = (data, isSolutions = false) => {
     const content = isSolutions ? data[activeSolutionTab] : data;
+    if (!content) return null;
     
     return (
       <div className="mega-menu-overlay">
@@ -172,12 +202,15 @@ const Navbar = () => {
               <div key={cIdx} className="mega-menu-column">
                 {col?.map((item, idx) => {
                   const Icon = item.icon;
-                  // Specific link mapping for solutions
                   let target = '/#';
-                  if (item.name.toLowerCase().includes('source') || item.name.toLowerCase().includes('contract')) target = '/#four-pillars-s2c';
-                  if (item.name.toLowerCase().includes('procure') && item.name.toLowerCase().includes('pay')) target = '/#four-pillars-p2p';
-                  if (item.name.toLowerCase().includes('reconcile') || item.name.toLowerCase().includes('receive')) target = '/#four-pillars-p2r';
-                  if (item.name.toLowerCase().includes('supplier') || item.name.toLowerCase().includes('intelligence')) target = '/#supplier-intelligence';
+                  const itemName = item.name.toLowerCase();
+                  if (itemName.includes('source') || itemName.includes('contract')) target = '/#four-pillars-s2c';
+                  if (itemName.includes('procure') && itemName.includes('pay')) target = '/#four-pillars-p2p';
+                  if (itemName.includes('reconcile') || itemName.includes('receive')) target = '/#four-pillars-p2r';
+                  if (itemName.includes('supplier') || itemName.includes('intelligence')) target = '/#supplier-intelligence';
+                  if (item.name === 'Competitive Analysis') target = '/competitive-analysis';
+                  if (item.name === 'Unified Command Centre') target = '/#unified-command-centre';
+                  if (item.name === 'Master Data Intelligence') target = '/#master-data-intelligence';
                   if (item.name === 'Become a Partner') target = '/partners#become-partner';
                   if (item.name === 'Benefit to Partner') target = '/partners#benefits';
                   if (item.name === 'Support Partner Gets') target = '/partners#support';
@@ -211,52 +244,79 @@ const Navbar = () => {
         </Link>
         
         <div className="navbar-links">
+          {/* Solutions */}
           <div 
             className="nav-item" 
             onMouseEnter={() => setActiveMegaMenu('solutions')}
             onMouseLeave={() => setActiveMegaMenu(null)}
           >
-            <span>Solutions</span>
+            <span className="nav-label">Solutions</span>
             {activeMegaMenu === 'solutions' && renderMegaMenu(solutionsData, true)}
           </div>
           
-          <NavLink to="/competitive-analysis" className="nav-item">Why SequelVendorX</NavLink>
+          {/* Why SequelVendorX */}
+          <div 
+            className="nav-item"
+            onMouseEnter={() => setActiveMegaMenu('why')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <NavLink to="/competitive-analysis" className={({isActive}) => `nav-label ${isActive ? 'active' : ''}`}>
+              Why SequelVendorX
+            </NavLink>
+            {activeMegaMenu === 'why' && renderMegaMenu(whyData)}
+          </div>
           
-          <NavLink to="/platform" className="nav-item">Platform</NavLink>
+          {/* Platform */}
+          <div 
+            className="nav-item"
+            onMouseEnter={() => setActiveMegaMenu('platform')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <NavLink to="/platform" className={({isActive}) => `nav-label ${isActive ? 'active' : ''}`}>
+              Platform
+            </NavLink>
+            {activeMegaMenu === 'platform' && renderMegaMenu(platformData)}
+          </div>
           
+          {/* Company */}
           <div 
             className="nav-item"
             onMouseEnter={() => setActiveMegaMenu('company')}
             onMouseLeave={() => setActiveMegaMenu(null)}
           >
-            <span>Company</span>
+            <span className="nav-label">Company</span>
             {activeMegaMenu === 'company' && renderMegaMenu(companyData)}
           </div>
 
+          {/* Resources */}
           <div 
             className="nav-item"
             onMouseEnter={() => setActiveMegaMenu('resources')}
             onMouseLeave={() => setActiveMegaMenu(null)}
           >
-            <span>Resources</span>
+            <span className="nav-label">Resources</span>
             {activeMegaMenu === 'resources' && renderMegaMenu(resourceData)}
           </div>
 
+          {/* Customers */}
           <div 
             className="nav-item"
             onMouseEnter={() => setActiveMegaMenu('customers')}
             onMouseLeave={() => setActiveMegaMenu(null)}
           >
-            <span>Customers</span>
+            <span className="nav-label">Customers</span>
             {activeMegaMenu === 'customers' && renderMegaMenu(customerData)}
           </div>
           
+          {/* Partners */}
           <div 
             className="nav-item"
             onMouseEnter={() => setActiveMegaMenu('partners')}
             onMouseLeave={() => setActiveMegaMenu(null)}
           >
-            <Link to="/partners" style={{ color: 'inherit', textDecoration: 'none' }}>Partners</Link>
+            <NavLink to="/partners" className={({isActive}) => `nav-label ${isActive ? 'active' : ''}`}>
+              Partners
+            </NavLink>
             {activeMegaMenu === 'partners' && renderMegaMenu(partnerData)}
           </div>
         </div>
