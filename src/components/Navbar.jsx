@@ -11,7 +11,8 @@ import {
   ShieldCheck, TrendingUp, MonitorSmartphone, Timer,
   BookOpen, PlayCircle, Calendar, FileText, HelpCircle,
   MessageSquare, Briefcase, GraduationCap, Shield,
-  Microscope, Landmark as Bank, Store, Rocket
+  Microscope, Landmark as Bank, Store, Rocket,
+  Handshake, HeartHandshake, LifeBuoy, Sprout, ClipboardCheck
 } from 'lucide-react';
 import './Navbar.css';
 
@@ -36,11 +37,11 @@ const Navbar = () => {
       ],
       col2: [
         { name: 'Procure-to-Pay', icon: Settings, desc: 'Transactional backbone from requisition to payment.' },
+        { name: 'Invoice Processing', icon: Receipt, desc: 'Automated 3-way matching for PO-based and AI-driven workflows for Non-PO based invoices.' },
         { name: 'eProcurement', icon: ShoppingCart, desc: 'Guided buying experience with pre-negotiated prices.' },
-        { name: 'Invoicing', icon: Receipt, desc: 'Automated 3-way matching and tax validation.' },
       ],
       col3: [
-        { name: 'Inventory Collaboration', icon: ActivitySquare, desc: 'Real-time visibility on stock and demand forecasts.' },
+        { name: 'Non-PO Categories', icon: ClipboardCheck, desc: '25+ Configurable & ready-to-deploy categories: Utilities, Rent, R&D, Logistics, Professional Fees, and more.' },
         { name: 'Supply Chain Collaboration', icon: Network, desc: 'Multi-tier visibility across your entire supply base.' },
       ]
     },
@@ -128,6 +129,21 @@ const Navbar = () => {
     ]
   };
 
+  const partnerData = {
+    col1: [
+      { name: 'Become a Partner', icon: Handshake, desc: 'Submit your application to join the SAI VLM ecosystem.' },
+      { name: 'Benefit to Partner', icon: TrendingUp, desc: 'Unlock new revenue streams and co-marketing opportunities.' },
+    ],
+    col2: [
+      { name: 'Support Partner Gets', icon: LifeBuoy, desc: 'Technical enablement, dedicated account managers, and pre-sales support.' },
+      { name: 'Grow Together', icon: Sprout, desc: 'Joint product roadmaps and strategic market expansion plans.' },
+    ],
+    col3: [
+      { name: 'Partner Portal', icon: Monitor, desc: 'Access resources, deal registration, and training modules.' },
+      { name: 'Partner Testimonials', icon: MessageSquare, desc: 'See how our partners are scaling their impact.' },
+    ]
+  };
+
   const renderMegaMenu = (data, isSolutions = false) => {
     const content = isSolutions ? data[activeSolutionTab] : data;
     
@@ -162,6 +178,7 @@ const Navbar = () => {
                   if (item.name.toLowerCase().includes('procure') && item.name.toLowerCase().includes('pay')) target = '/#four-pillars-p2p';
                   if (item.name.toLowerCase().includes('reconcile') || item.name.toLowerCase().includes('receive')) target = '/#four-pillars-p2r';
                   if (item.name.toLowerCase().includes('supplier') || item.name.toLowerCase().includes('intelligence')) target = '/#supplier-intelligence';
+                  if (item.name === 'Become a Partner') target = '/partners#become-partner';
 
                   return (
                     <Link key={idx} to={item.name === 'ROI Calculator' ? '/roi-calculator' : target} className="mega-menu-link">
@@ -229,7 +246,14 @@ const Navbar = () => {
             {activeMegaMenu === 'customers' && renderMegaMenu(customerData)}
           </div>
           
-          <div className="nav-item">Partners</div>
+          <div 
+            className="nav-item"
+            onMouseEnter={() => setActiveMegaMenu('partners')}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <span>Partners</span>
+            {activeMegaMenu === 'partners' && renderMegaMenu(partnerData)}
+          </div>
         </div>
 
         <div className="navbar-actions">

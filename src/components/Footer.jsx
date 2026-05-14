@@ -31,6 +31,7 @@ const Footer = () => {
               <li><Link to="/#four-pillars-p2r" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Procure-to-Reconcile</Link></li>
               <li><Link to="/#supplier-intelligence" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Supplier Intelligence</Link></li>
               <li><Link to="/roi-calculator" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>ROI Calculator</Link></li>
+              <li><Link to="/partners" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Partners Program</Link></li>
             </ul>
           </div>
 

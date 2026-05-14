@@ -1,5 +1,9 @@
 import React from 'react';
-import { ArrowRight, Search, ClipboardList, ShieldCheck, FileText, Package, Truck, TrendingUp, Star, Award, Gauge } from 'lucide-react';
+import { 
+  ArrowRight, Search, ClipboardList, ShieldCheck, FileText, 
+  Package, Truck, TrendingUp, Star, Award, Gauge,
+  ActivitySquare, Zap, ShieldAlert, Leaf, Receipt
+} from 'lucide-react';
 import './Hero.css';
 
 const Hero = () => {
@@ -126,162 +130,124 @@ const Hero = () => {
         </div>
 
         {/* Full-Width Unified Command Centre */}
-        <div className="glass-panel ucc-panel" style={{ animation: 'fadeInUp 1s ease-out forwards', animationDelay: '0.25s', opacity: 0 }}>
+        <div className="glass-panel ucc-container animate-fade-up" style={{ animationDelay: '0.25s' }}>
           
-          {/* Mockup Header */}
-          <div className="ucc-header">
-            <h3>Unified Command Centre</h3>
-            <div className="ucc-dots">
-              <div className="ucc-dot red" />
-              <div className="ucc-dot yellow" />
-              <div className="ucc-dot green" />
+          <div className="ucc-header-row">
+            <div className="ucc-title-group">
+              <h3>Unified <span className="text-gradient">Command Centre</span></h3>
+              <p>Real-time organizational intelligence & vendor economy orchestration.</p>
+            </div>
+            <div className="ucc-system-status">
+              <div className="status-item">
+                <span className="status-dot pulse-green"></span>
+                System Operational
+              </div>
+              <div className="status-item">
+                <ShieldCheck size={14} />
+                Trust Score: 98.4
+              </div>
             </div>
           </div>
 
-          {/* Top Stats Bar */}
-          <div className="ucc-stats-bar">
-            <span className="ucc-stat"><strong>0</strong> Active Vendors</span>
-            <span className="ucc-stat highlight"><strong>3</strong> Pending Actions</span>
-            <span className="ucc-stat"><strong>1</strong> Active Contracts</span>
-            <span className="ucc-stat"><strong>3</strong> Open Orders</span>
-          </div>
-
-          {/* Dashboard Cards Grid */}
-          <div className="ucc-cards-grid">
+          <div className="ucc-main-grid">
             
-            {/* Sourcing */}
-            <div className="ucc-card">
-              <div className="ucc-card-header">
-                <div className="ucc-card-title">
-                  <span className="ucc-card-icon"><Search size={14} /></span>
-                  <div>
-                    <h4>Sourcing</h4>
-                    <span className="ucc-card-sub">Supplier Discovery & RFQs</span>
-                  </div>
-                </div>
-                <span className="ucc-badge blue">7 RFQs</span>
+            {/* Left: Operations Summary */}
+            <div className="ucc-sidebar-left">
+              <div className="ucc-stat-card">
+                <span className="label">Total Managed Spend</span>
+                <span className="value">$1.2B</span>
+                <span className="trend positive">+12.4% vs LY</span>
               </div>
-              <div className="ucc-card-body">
-                <div className="ucc-row"><span>Total RFIs</span><strong>7</strong></div>
-                <div className="ucc-row"><span>Total RFQs</span><strong>7</strong></div>
-                <div className="ucc-row"><span>Total Auctions</span><strong>7</strong></div>
-                <div className="ucc-progress-row">
-                  <span>RFI to RFQ Conversion</span>
-                  <strong>67%</strong>
-                </div>
-                <div className="ucc-progress-bar"><div className="ucc-progress-fill" style={{ width: '67%' }} /></div>
-                <div className="ucc-progress-row">
-                  <span>Full Cycle Conversion</span>
-                  <strong>33%</strong>
-                </div>
-                <div className="ucc-progress-bar"><div className="ucc-progress-fill short" style={{ width: '33%' }} /></div>
+              <div className="ucc-stat-card">
+                <span className="label">Active Vendors</span>
+                <span className="value">4,821</span>
+                <span className="trend">82 Critical</span>
+              </div>
+              <div className="ucc-stat-card">
+                <span className="label">Compliance Index</span>
+                <span className="value">94.2%</span>
+                <div className="mini-chart"><div className="fill" style={{width: '94%'}}></div></div>
               </div>
             </div>
 
-            {/* Vendor Onboarding */}
-            <div className="ucc-card">
-              <div className="ucc-card-header">
-                <div className="ucc-card-title">
-                  <span className="ucc-card-icon"><ClipboardList size={14} /></span>
-                  <div>
-                    <h4>Vendor Onboarding</h4>
-                    <span className="ucc-card-sub">New Vendor Registrations</span>
-                  </div>
-                </div>
-                <span className="ucc-badge amber">3 Pending</span>
+            {/* Center: Live Action Hub */}
+            <div className="ucc-center-hub">
+              <div className="hub-header">
+                <h4><ActivitySquare size={16} /> Live Orchestration Hub</h4>
+                <span className="badge">12 New Events</span>
               </div>
-              <div className="ucc-card-body">
-                <div className="ucc-row"><span>Total Vendors</span><strong>3</strong></div>
-                <div className="ucc-row"><span>Approved Vendors</span><strong>0</strong></div>
-                <div className="ucc-row"><span>Rejected Vendors</span><strong>0</strong></div>
-                <div className="ucc-progress-row">
-                  <span>Pending Review</span>
-                  <strong>100%</strong>
+              
+              <div className="hub-events-list">
+                <div className="hub-event">
+                  <div className="event-icon sourcing"><Zap size={14} /></div>
+                  <div className="event-info">
+                    <strong>Direct Material RFQ Awarded</strong>
+                    <span>Pharma Division • $4.2M Savings Identified</span>
+                  </div>
+                  <span className="event-time">Just now</span>
                 </div>
-                <div className="ucc-progress-bar"><div className="ucc-progress-fill warning" style={{ width: '100%' }} /></div>
+                <div className="hub-event">
+                  <div className="event-icon risk"><ShieldAlert size={14} /></div>
+                  <div className="event-info">
+                    <strong>Supplier Risk Alert</strong>
+                    <span>Tier-2 Logistics Provider • Financial Anomaly Detected</span>
+                  </div>
+                  <span className="event-time">12m ago</span>
+                </div>
+                <div className="hub-event">
+                  <div className="event-icon esg"><Leaf size={14} /></div>
+                  <div className="event-info">
+                    <strong>ESG Report Generated</strong>
+                    <span>Monthly Scope 3 Emissions across 200 Vendors</span>
+                  </div>
+                  <span className="event-time">45m ago</span>
+                </div>
+              </div>
+
+              <div className="hub-footer">
+                <div className="hub-actions">
+                  <button className="hub-btn">View All Tasks</button>
+                  <button className="hub-btn primary">Analyze Anomalies</button>
+                </div>
               </div>
             </div>
 
-            {/* Vendor Due Diligence */}
-            <div className="ucc-card">
-              <div className="ucc-card-header">
-                <div className="ucc-card-title">
-                  <span className="ucc-card-icon"><ShieldCheck size={14} /></span>
-                  <div>
-                    <h4>Vendor Due Diligence</h4>
-                    <span className="ucc-card-sub">Risk & Compliance Checks</span>
-                  </div>
+            {/* Right: Functional Modules */}
+            <div className="ucc-modules-grid">
+              <div className="ucc-module-card">
+                <div className="module-top">
+                  <Search size={14} />
+                  <span>Sourcing</span>
                 </div>
-                <span className="ucc-badge red">0 Non-Compliant</span>
+                <div className="module-val">14 Active RFQs</div>
+                <div className="module-sub">7 Awards Pending</div>
               </div>
-              <div className="ucc-card-body">
-                <div className="ucc-row"><span>Total MSME</span><strong>1</strong></div>
-                <div className="ucc-row"><span>Compliant</span><strong>1</strong></div>
-                <div className="ucc-row"><span>Non-Compliant</span><strong>0</strong></div>
-                <div className="ucc-progress-row">
-                  <span>Compliance Split</span>
-                  <strong>100%</strong>
+              <div className="ucc-module-card">
+                <div className="module-top">
+                  <ClipboardList size={14} />
+                  <span>Onboarding</span>
                 </div>
-                <div className="ucc-progress-bar"><div className="ucc-progress-fill success" style={{ width: '100%' }} /></div>
+                <div className="module-val">28 In Progress</div>
+                <div className="module-sub">12 Ready for Approval</div>
+              </div>
+              <div className="ucc-module-card">
+                <div className="module-top">
+                  <FileText size={14} />
+                  <span>Contracts</span>
+                </div>
+                <div className="module-val">1,240 Active</div>
+                <div className="module-sub">18 Expiring 30d</div>
+              </div>
+              <div className="ucc-module-card">
+                <div className="module-top">
+                  <Receipt size={14} />
+                  <span>Invoicing</span>
+                </div>
+                <div className="module-val">82% Touchless</div>
+                <div className="module-sub">34 Exceptions Flagged</div>
               </div>
             </div>
 
-            {/* Contract Lifecycle */}
-            <div className="ucc-card">
-              <div className="ucc-card-header">
-                <div className="ucc-card-title">
-                  <span className="ucc-card-icon"><FileText size={14} /></span>
-                  <div>
-                    <h4>Contract Lifecycle</h4>
-                    <span className="ucc-card-sub">Creation to Renewal</span>
-                  </div>
-                </div>
-                <span className="ucc-badge green">0 Expiring</span>
-              </div>
-              <div className="ucc-card-body">
-                <div className="ucc-row"><span>Active</span><strong>1</strong></div>
-                <div className="ucc-row"><span>Expiring (30d)</span><strong>0</strong></div>
-                <div className="ucc-row"><span>Draft/Pending</span><strong>0</strong></div>
-              </div>
-            </div>
-
-            {/* Catalogue */}
-            <div className="ucc-card">
-              <div className="ucc-card-header">
-                <div className="ucc-card-title">
-                  <span className="ucc-card-icon"><Package size={14} /></span>
-                  <div>
-                    <h4>Catalogue</h4>
-                    <span className="ucc-card-sub">Store & Product Metrics</span>
-                  </div>
-                </div>
-                <span className="ucc-badge blue">5 Products</span>
-              </div>
-              <div className="ucc-card-body">
-                <div className="ucc-row"><span>Total Store</span><strong>3</strong></div>
-                <div className="ucc-row"><span>Total Products</span><strong>5</strong></div>
-                <div className="ucc-row"><span>Total Orders</span><strong>0</strong></div>
-              </div>
-            </div>
-
-            {/* Order Management */}
-            <div className="ucc-card">
-              <div className="ucc-card-header">
-                <div className="ucc-card-title">
-                  <span className="ucc-card-icon"><Truck size={14} /></span>
-                  <div>
-                    <h4>Order Management</h4>
-                    <span className="ucc-card-sub">Purchase Orders & Fulfillment</span>
-                  </div>
-                </div>
-                <span className="ucc-badge green">On Track</span>
-              </div>
-              <div className="ucc-card-body">
-                <div className="ucc-row"><span>Open Orders</span><strong>3</strong></div>
-                <div className="ucc-row"><span>Fulfilled Today</span><strong>0</strong></div>
-                <div className="ucc-row"><span>7-Day Payments</span><strong>₹3,990</strong></div>
-              </div>
-            </div>
           </div>
 
         </div>

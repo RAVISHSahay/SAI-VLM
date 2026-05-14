@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import PlatformTabs from './components/PlatformTabs';
 import PlatformDetail from './pages/PlatformDetail';
 import ROICalculator from './components/ROICalculator';
+import Partners from './pages/Partners';
 import './App.css';
 
 // Component to handle hash scrolling
@@ -70,6 +71,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/platform" element={<PlatformDetail />} />
           <Route path="/roi-calculator" element={<ROICalculator />} />
+          <Route path="/partners" element={<Partners />} />
         </Routes>
         <Footer />
       </div>
