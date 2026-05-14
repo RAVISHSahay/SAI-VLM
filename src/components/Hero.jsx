@@ -30,7 +30,7 @@ const Hero = () => {
             </h1>
             
             <p className="hero-desc">
-              Traditional systems manage vendors. SAI VLM manages the entire vendor economy — from sourcing to financial closure to performance optimization — powered by AI.
+              Traditional systems manage vendors. SequelVendorX manages the entire vendor economy — from sourcing to financial closure to performance optimization — powered by AI Agents.
             </p>
             
             <div className="hero-buttons">

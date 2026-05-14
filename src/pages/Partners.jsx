@@ -101,7 +101,7 @@ const Partners = () => {
                     <span className="num">03</span>
                     <div>
                       <strong>Onboarding & Training</strong>
-                      <p>Get certified on the SAI VLM platform and access our resource hub.</p>
+                      <p>Get certified on the SequelVendorX platform and access our resource hub.</p>
                     </div>
                   </li>
                 </ul>
@@ -112,7 +112,7 @@ const Partners = () => {
                   <div className="success-message text-center">
                     <CheckCircle2 size={48} color="#10b981" />
                     <h3>Application Submitted!</h3>
-                    <p>Thank you for your interest in partnering with SAI VLM. Our team will reach out within 48 hours.</p>
+                    <p>Thank you for your interest in partnering with SequelVendorX. Our team will reach out within 48 hours.</p>
                     <button className="btn-outline" onClick={() => setFormStatus('idle')}>Submit Another</button>
                   </div>
                 ) : (
@@ -170,7 +170,7 @@ const Partners = () => {
           <div className="tab-content-panel animate-fade-in">
             <div className="tab-header">
               <h2>Unlock Shared <span className="text-gradient">Revenue & Growth</span></h2>
-              <p>SAI VLM partners enjoy a premium support structure designed for long-term scalability.</p>
+              <p>SequelVendorX partners enjoy a premium support structure designed for long-term scalability.</p>
             </div>
             <div className="benefits-grid">
               {[
@@ -233,7 +233,7 @@ const Partners = () => {
         return (
           <div className="tab-content-panel animate-fade-in">
             <div className="tab-header">
-              <h2>Scale with <span className="text-gradient">SAI VLM</span></h2>
+              <h2>Scale with <span className="text-gradient">SequelVendorX</span></h2>
               <p>We treat our partners as extensions of our team, sharing product vision and market trends.</p>
             </div>
             <div className="growth-row">

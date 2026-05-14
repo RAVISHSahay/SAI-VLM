@@ -12,7 +12,7 @@ const Footer = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
               <Network color="var(--accent-blue)" size={24} />
               <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.5px' }}>
-                SAI <span className="text-gradient">VLM</span>
+                SequelVendor<span className="text-gradient">X</span>
               </span>
             </div>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.05)', color: 'var(--text-muted)', fontSize: '0.85rem' }}>
-          <div>&copy; 2026 SAI VLM. All rights reserved.</div>
+          <div>&copy; 2026 SequelVendorX. All rights reserved.</div>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms of Service</a>

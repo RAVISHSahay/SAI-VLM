@@ -106,7 +106,7 @@ const ROICalculator = () => {
           <div className="roi-badge">ROI Calculator</div>
           <h1>Quantify Your <span className="text-gradient">VLM Transformation</span></h1>
           <p className="roi-subtitle">
-            Discover the financial impact of moving from manual vendor management to SAI VLM's agentic AI framework.
+            Discover the financial impact of moving from manual vendor management to SequelVendorX's agentic AI framework.
           </p>
         </div>
 

@@ -207,7 +207,7 @@ const Navbar = () => {
         
         <Link to="/" className="navbar-brand" style={{ textDecoration: 'none' }}>
           <Network color="var(--accent-blue)" size={28} />
-          <span className="brand-text">SAI <span className="text-gradient">VLM</span></span>
+          <span className="brand-text">SequelVendor<span className="text-gradient">X</span></span>
         </Link>
         
         <div className="navbar-links">
@@ -219,6 +219,8 @@ const Navbar = () => {
             <span>Solutions</span>
             {activeMegaMenu === 'solutions' && renderMegaMenu(solutionsData, true)}
           </div>
+          
+          <Link to="/competitive-analysis" className="nav-item" style={{ textDecoration: 'none' }}>Why SequelVendorX</Link>
           
           <Link to="/platform" className="nav-item" style={{ textDecoration: 'none' }}>Platform</Link>
           
@@ -262,7 +264,6 @@ const Navbar = () => {
         <div className="navbar-actions">
           <button className="icon-btn"><Search size={20} /></button>
           <button className="icon-btn"><Globe size={20} /></button>
-          <button className="btn-outline">Why SAI VLM <ArrowRight size={16}/></button>
           <button className="btn-solid">Contact Us <ArrowRight size={16}/></button>
         </div>
 
