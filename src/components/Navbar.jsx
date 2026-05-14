@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { 
   Network, Search, Globe, ArrowRight,
   Users, Monitor, LineChart, LayoutDashboard,
@@ -220,9 +220,9 @@ const Navbar = () => {
             {activeMegaMenu === 'solutions' && renderMegaMenu(solutionsData, true)}
           </div>
           
-          <Link to="/competitive-analysis" className="nav-item" style={{ textDecoration: 'none' }}>Why SequelVendorX</Link>
+          <NavLink to="/competitive-analysis" className="nav-item">Why SequelVendorX</NavLink>
           
-          <Link to="/platform" className="nav-item" style={{ textDecoration: 'none' }}>Platform</Link>
+          <NavLink to="/platform" className="nav-item">Platform</NavLink>
           
           <div 
             className="nav-item"
