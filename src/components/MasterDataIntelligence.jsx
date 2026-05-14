@@ -156,13 +156,7 @@ const MasterDataIntelligence = () => {
 
   const handleTabClick = (id) => {
     setActiveEntity(id);
-    const detailsSection = document.getElementById('entity-details');
-    if (detailsSection) {
-      // Small delay to allow state to render first
-      setTimeout(() => {
-        detailsSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 50);
-    }
+    // Remove scrollIntoView to keep the cards in focus as per user request
   };
 
   return (
@@ -177,26 +171,30 @@ const MasterDataIntelligence = () => {
 
         <div className="mdi-layout-horizontal">
           
-          {/* Horizontal Navigation */}
+          {/* Horizontal Navigation Cards */}
           <div className="mdi-top-nav-section">
             <div className="mdi-section-title-wrapper">
-              <Database size={32} color="var(--accent-blue)" />
+              <Database size={24} color="var(--accent-blue)" />
               <h3 className="mdi-section-title">The 12 Foundational Entities</h3>
             </div>
             
             <div className="mdi-tabs-container">
-              <ul className="mdi-horizontal-tabs">
-                {masterDataEntities.map(entity => (
-                  <li 
-                    key={entity.id}
-                    className={`mdi-tab-item ${activeEntity === entity.id ? 'active' : ''}`}
-                    onClick={() => handleTabClick(entity.id)}
-                  >
-                    {/* Splitting the title into two lines as shown in the image if possible, or just space */}
-                    {entity.title.replace('. ', '.\n')}
-                  </li>
-                ))}
-              </ul>
+              <div className="mdi-horizontal-tabs">
+                {masterDataEntities.map(entity => {
+                  const [num, ...titleParts] = entity.title.split('. ');
+                  const title = titleParts.join('. ');
+                  return (
+                    <div 
+                      key={entity.id}
+                      className={`mdi-tab-card ${activeEntity === entity.id ? 'active' : ''}`}
+                      onClick={() => handleTabClick(entity.id)}
+                    >
+                      <span className="mdi-card-num">{num}.</span>
+                      <span className="mdi-card-title">{title}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
