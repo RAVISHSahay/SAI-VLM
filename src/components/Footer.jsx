@@ -40,7 +40,7 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, m: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
               <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>About Us</a></li>
               <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Careers</a></li>
-              <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Contact</a></li>
+              <li><Link to="/contact" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Contact</Link></li>
               <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Partners</a></li>
             </ul>
           </div>

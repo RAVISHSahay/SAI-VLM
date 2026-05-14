@@ -12,6 +12,7 @@ import PlatformDetail from './pages/PlatformDetail';
 import ROICalculator from './components/ROICalculator';
 import Partners from './pages/Partners';
 import CompetitiveAnalysis from './pages/CompetitiveAnalysis';
+import Contact from './pages/Contact';
 import './App.css';
 
 // Component to handle hash scrolling
@@ -74,6 +75,7 @@ function App() {
           <Route path="/roi-calculator" element={<ROICalculator />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/competitive-analysis" element={<CompetitiveAnalysis />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>

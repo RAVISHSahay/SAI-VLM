@@ -324,7 +324,9 @@ const Navbar = () => {
         <div className="navbar-actions">
           <button className="icon-btn"><Search size={20} /></button>
           <button className="icon-btn"><Globe size={20} /></button>
-          <button className="btn-solid">Contact Us <ArrowRight size={16}/></button>
+          <Link to="/contact" style={{ textDecoration: 'none' }}>
+            <button className="btn-solid">Contact Us <ArrowRight size={16}/></button>
+          </Link>
         </div>
 
       </div>
