@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Network } from 'lucide-react';
 
 const Footer = () => {
@@ -21,12 +22,14 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 style={{ fontSize: '1rem', marginBottom: '1.5rem', color: '#fff' }}>Platform</h4>
+            <h4 style={{ fontSize: '1rem', marginBottom: '1.5rem', color: '#fff' }}>
+              <Link to="/platform" style={{ color: 'inherit', textDecoration: 'none' }}>Platform</Link>
+            </h4>
             <ul style={{ listStyle: 'none', padding: 0, m: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-              <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Source-to-Contract</a></li>
-              <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Procure-to-Pay</a></li>
-              <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Procure-to-Reconcile</a></li>
-              <li><a href="#" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Supplier Intelligence</a></li>
+              <li><Link to="/#four-pillars-s2c" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Source-to-Contract</Link></li>
+              <li><Link to="/#four-pillars-p2p" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Procure-to-Pay</Link></li>
+              <li><Link to="/#four-pillars-p2r" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Procure-to-Reconcile</Link></li>
+              <li><Link to="/#supplier-intelligence" style={{ color: 'var(--text-muted)', fontSize: '0.9rem', transition: 'color 0.2s', textDecoration: 'none' }} onMouseOver={e => e.target.style.color='var(--accent-blue)'} onMouseOut={e => e.target.style.color='var(--text-muted)'}>Supplier Intelligence</Link></li>
             </ul>
           </div>
 

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Database, Bot, AlertTriangle, ShieldCheck, Cpu } from 'lucide-react';
 import './MasterDataIntelligence.css';
 
@@ -143,6 +144,13 @@ const masterDataEntities = [
 
 const MasterDataIntelligence = () => {
   const [activeEntity, setActiveEntity] = useState(masterDataEntities[0].id);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === '#master-data-intelligence-vendor' || hash === '#supplier-intelligence') {
+      setActiveEntity('vendor');
+    }
+  }, [hash]);
 
   const currentEntity = masterDataEntities.find(e => e.id === activeEntity);
 

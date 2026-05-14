@@ -89,7 +89,7 @@ const ProcurementLifecycle = () => {
   const activeData = lifecycleData.find(stage => stage.id === activeStage);
 
   return (
-    <section className="lifecycle-section">
+    <section className="lifecycle-section" id="procurement-lifecycle">
       <div className="container">
         
         <div className="lifecycle-header text-center">

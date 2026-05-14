@@ -53,36 +53,36 @@ const Navbar = () => {
     },
     industry: {
       col1: [
-        { name: 'Manufacturing', icon: Factory },
-        { name: 'Retail & Consumer Goods', icon: ShoppingBag },
-        { name: 'Financial Services', icon: Landmark },
-        { name: 'Healthcare', icon: Stethoscope },
+        { name: 'Manufacturing', icon: Factory, desc: 'Optimize supply chain resilience with raw material quality tracking and predictive partner maintenance.' },
+        { name: 'Retail & Consumer Goods', icon: ShoppingBag, desc: 'Manage high-volume vendor ecosystems and seasonal demand with automated replenishment.' },
+        { name: 'Financial Services', icon: Landmark, desc: 'Ensure rigorous regulatory compliance and cybersecurity with automated vendor vetting.' },
+        { name: 'Healthcare', icon: Stethoscope, desc: 'Maintain strict data privacy and patient safety standards with comprehensive security assessments.' },
       ],
       col2: [
-        { name: 'Public Sector', icon: Building2 },
-        { name: 'Automotive', icon: Car },
-        { name: 'Technology', icon: Cpu },
-        { name: 'Energy & Utilities', icon: Zap },
+        { name: 'Public Sector', icon: Building2, desc: 'Enhance transparency and accountability with auditable procurement and regulatory compliance.' },
+        { name: 'Automotive', icon: Car, desc: 'Streamline complex parts supply chains with strict engineering standards and JIT coordination.' },
+        { name: 'Technology', icon: Cpu, desc: 'Manage rapid digital transformation with automated IT vendor onboarding and license tracking.' },
+        { name: 'Energy & Utilities', icon: Zap, desc: 'Ensure infrastructure reliability and safety with rigorous subcontractor and subcontractor management.' },
       ],
       col3: [
-        { name: 'Aerospace & Defense', icon: Plane },
-        { name: 'Telecommunications', icon: Phone },
+        { name: 'Aerospace & Defense', icon: Plane, desc: 'Maintain high-security standards and supply chain integrity with strict export control compliance.' },
+        { name: 'Telecommunications', icon: Phone, desc: 'Scale 5G rollouts with high-volume contract management and strict performance SLA tracking.' },
       ]
     },
     need: {
       col1: [
-        { name: 'Reduce Costs', icon: TrendingDown },
-        { name: 'Mitigate Risk', icon: ShieldAlert },
-        { name: 'Improve ESG', icon: Leaf },
+        { name: 'Reduce Costs', icon: TrendingDown, desc: 'Optimize Total Cost of Ownership through strategic consolidation and automated spend management.' },
+        { name: 'Mitigate Risk', icon: ShieldAlert, desc: 'Ensure business continuity with real-time supplier monitoring to proactively mitigate disruptions.' },
+        { name: 'Improve ESG', icon: Leaf, desc: 'Integrate ethical and sustainable criteria into sourcing to ensure a compliant supply base.' },
       ],
       col2: [
-        { name: 'Supplier Diversity', icon: UsersRound },
-        { name: 'Compliance Management', icon: ShieldCheck },
-        { name: 'Optimize Working Capital', icon: TrendingUp },
+        { name: 'Supplier Diversity', icon: UsersRound, desc: 'Promote inclusive procurement by identifying and onboarding diverse-owned businesses.' },
+        { name: 'Compliance Management', icon: ShieldCheck, desc: 'Automate regulatory adherence and audit readiness with centralized document tracking.' },
+        { name: 'Optimize Working Capital', icon: TrendingUp, desc: 'Improve cash flow by aligning payment terms and optimizing inventory cycles through data.' },
       ],
       col3: [
-        { name: 'Digital Transformation', icon: MonitorSmartphone },
-        { name: 'Faster Time-to-Market', icon: Timer },
+        { name: 'Digital Transformation', icon: MonitorSmartphone, desc: 'Digitize manual workflows to eliminate bottlenecks and enable data-driven decision-making.' },
+        { name: 'Faster Time-to-Market', icon: Timer, desc: 'Accelerate source-to-contract cycles through automated approvals and pre-vetted catalogs.' },
       ]
     }
   };
@@ -143,42 +143,48 @@ const Navbar = () => {
                   <div className="mega-menu-column">
                     {activeData?.col1?.map((item, idx) => {
                       const Icon = item.icon;
+                      const target = item.name.toLowerCase().includes('source') ? '/#four-pillars-s2c' : 
+                                    item.name.toLowerCase().includes('contract') ? '/#four-pillars-s2c' : '/#';
                       return (
-                        <a key={idx} href="#" className="mega-menu-link">
+                        <Link key={idx} to={target} className="mega-menu-link">
                           <div className="mega-icon-wrapper"><Icon size={18} /></div>
                           <div className="mega-link-content">
                             <span className="mega-link-name">{item.name}</span>
                             {item.desc && <p className="mega-link-desc">{item.desc}</p>}
                           </div>
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>
                   <div className="mega-menu-column">
                     {activeData?.col2?.map((item, idx) => {
                       const Icon = item.icon;
+                      const target = item.name.toLowerCase().includes('procure') ? '/#four-pillars-p2p' : 
+                                    item.name.toLowerCase().includes('invoice') ? '/#procurement-lifecycle' : '/#';
                       return (
-                        <a key={idx} href="#" className="mega-menu-link">
+                        <Link key={idx} to={target} className="mega-menu-link">
                           <div className="mega-icon-wrapper"><Icon size={18} /></div>
                           <div className="mega-link-content">
                             <span className="mega-link-name">{item.name}</span>
                             {item.desc && <p className="mega-link-desc">{item.desc}</p>}
                           </div>
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>
                   <div className="mega-menu-column">
                     {activeData?.col3?.map((item, idx) => {
                       const Icon = item.icon;
+                      const target = item.name.toLowerCase().includes('direct') ? '/#four-pillars-s2c' : 
+                                    item.name.toLowerCase().includes('collaboration') ? '/#procurement-lifecycle' : '/#';
                       return (
-                        <a key={idx} href="#" className="mega-menu-link">
+                        <Link key={idx} to={target} className="mega-menu-link">
                           <div className="mega-icon-wrapper"><Icon size={18} /></div>
                           <div className="mega-link-content">
                             <span className="mega-link-name">{item.name}</span>
                             {item.desc && <p className="mega-link-desc">{item.desc}</p>}
                           </div>
-                        </a>
+                        </Link>
                       );
                     })}
                   </div>

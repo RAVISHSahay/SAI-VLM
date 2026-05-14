@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './FourPillars.css';
 
 const pillars = [
@@ -78,11 +79,21 @@ const pillars = [
 
 const FourPillars = () => {
   const [activeTab, setActiveTab] = useState('s2c');
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash.startsWith('#four-pillars-')) {
+      const tabId = hash.replace('#four-pillars-', '');
+      if (pillars.some(p => p.id === tabId)) {
+        setActiveTab(tabId);
+      }
+    }
+  }, [hash]);
 
   const activeData = pillars.find(p => p.id === activeTab);
 
   return (
-    <section className="four-pillars-section">
+    <section className="four-pillars-section" id="four-pillars">
       <div className="container">
         
         <div className="pillars-intro text-center">
