@@ -1,0 +1,337 @@
+.roi-page-container {
+  padding: 10rem 0 6rem 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% -20%, rgba(56, 189, 248, 0.1), transparent 50%),
+              radial-gradient(circle at 0% 100%, rgba(30, 58, 138, 0.1), transparent 40%);
+}
+
+.roi-header {
+  margin-bottom: 4rem;
+}
+
+.roi-badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 100px;
+  color: var(--accent-blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.roi-subtitle {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* Layout Grid */
+.roi-calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .roi-calculator-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Inputs Panel */
+.roi-inputs-panel {
+  padding: 2.5rem;
+}
+
+.roi-inputs-panel .section-title {
+  margin-bottom: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 2.5rem;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.label-row label {
+  color: white;
+  font-weight: 500;
+}
+
+.label-row .value {
+  color: var(--accent-blue);
+  font-weight: 700;
+  font-size: 1.25rem;
+  font-family: monospace;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent-blue);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  transition: all 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.formula-info {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-blue);
+}
+
+.formula-info p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Results Panel */
+.total-savings-card {
+  padding: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.total-savings-card .card-label {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.total-savings-card .total-value {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.payback-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.breakdown-card {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.breakdown-card .icon {
+  margin-bottom: 1rem;
+}
+
+.breakdown-card .label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.breakdown-card .val {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+}
+
+.btn-solid.wide {
+  width: 100%;
+  justify-content: center;
+  padding: 1.25rem;
+  font-size: 1.1rem;
+}
+
+/* Form Section */
+.roi-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.roi-form-layout {
+  padding: 4rem;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.form-header h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.form-header p {
+  color: var(--text-muted);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.form-group input, .form-group select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  color: white;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-group input:focus, .form-group select:focus {
+  border-color: var(--accent-blue);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input.error {
+  border-color: #ef4444;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 0.75rem;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.privacy-note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Success State */
+.roi-success-container {
+  max-width: 600px;
+  margin: 4rem auto;
+}
+
+.success-icon-wrapper {
+  margin-bottom: 2rem;
+}
+
+.success-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.success-stats .stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.success-stats .stat span {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.success-stats .stat strong {
+  font-size: 1.5rem;
+  color: var(--accent-blue);
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

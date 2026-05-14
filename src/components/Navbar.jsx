@@ -164,7 +164,7 @@ const Navbar = () => {
                   if (item.name.toLowerCase().includes('supplier') || item.name.toLowerCase().includes('intelligence')) target = '/#supplier-intelligence';
 
                   return (
-                    <Link key={idx} to={target} className="mega-menu-link">
+                    <Link key={idx} to={item.name === 'ROI Calculator' ? '/roi-calculator' : target} className="mega-menu-link">
                       <div className="mega-icon-wrapper"><Icon size={18} /></div>
                       <div className="mega-link-content">
                         <span className="mega-link-name">{item.name}</span>
